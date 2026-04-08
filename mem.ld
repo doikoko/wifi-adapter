@@ -6,28 +6,43 @@ MEMORY{
 }
 SECTIONS{
     .isr_vector : {
-        KEEP(*(.isr_vector))
+        KEEP(*(.isr_vector*))
     } > FLASH
     
     .text : {
         . = ALIGN(4);
-        *(.text)
-        *(.rodata)
+        *(.text*)
+        *(.rodata*)
         . = ALIGN(4);
         _etext = .;
     } > FLASH
     
     .data : {    
         _sdata = .;
-        *(.data)
+        *(.data*)
         . = ALIGN(4);
         _edata = .;
     } > SRAM AT > FLASH
 
     .bss : {
         _sbss = .;
-        *(.bss)
+        *(.bss*)
         . = ALIGN(4);
         _ebss = .;
     } > SRAM
+
+    .received_data : {
+        _srecieved_data = .;
+        *(.received_data*)
+        . = ALIGN(4);
+        _erecieved_data = .;
+    } > SRAM
+
+    .shstrtab : {
+        *(.shstrtab)
+    }
+    
+    /DISCARD/ : {
+        *
+    }
 }

@@ -1,0 +1,12 @@
+[package]
+name = "debug"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "debug"
+crate-type = ["rlib"]
+
+[dependencies]
+drivers = { path="../drivers" }
+vcell ={ version = "*" }
